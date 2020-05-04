@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+
+    <!-- link -->
+    <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css">
+
+     <!-- style  -->
+     <style>
+        
+        body{
+            margin-top: 70px;
+            background: #333;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <div class="container py-5">
+        <div class="card">
+            <div class="card-header text-center bg-primary text-light">
+                <strong>BMI CALCULATOR</strong>
+            </div>
+            <div class="card-body">
+                <form action="" class="w-50 m-auto" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="">Weight:</label>
+                        <input type="number" id="weight" class="form-control" placeholder="Weight in kgs" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Height:</label>
+                        <input type="text" id="height" class="form-control" placeholder="Height in feet" required>
+                    </div>
+                    <div>
+                        <button class="btn btn-success" type="submit" onclick="getbmivalue()">Check BMI</button>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="">BMI Value:</label>
+                        <input type="text" id="bmivalue" class="form-control">
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="card-footer">
+                <h4 class="text-center">A healthy BMI ranges is between 19 to 25.</h4>
+                <h6 class="text-center" style="font-size: 28px;">BMI Categories</h6>
+                    <p class="text-center">Underweight = < 18.5</p>
+                    <p class="text-center">Normal weight = 18.5 - 24.9</p>
+                    <p class="text-center">Over weigth = 25-29.9</p>
+                    <p class="text-center">Obesity = Greater than or equal or 30</p>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        function getbmivalue(){
+            var weight = document.getElementById('weight').value;
+            var height = document.getElementById('height').value;
+            
+            //Converting height in inch
+            height = height * 12; // 1 feet = 12 inch
+            //Coverting height in meter
+            height = height * 0.025; // Now in meters
+
+            // BMI formula
+            // BMI = Weight / (height in meter^2);
+
+            var newbmivalue = weight / Math.pow(height,2);
+            newbmivalue = newbmivalue.toFixed(4); //used to print 4 numbers after decimal.
+            // newbmivalue = Math.round(newbmivalue); // To get round off 23.5 = 24 and 23.3 = 23 23    
+
+            document.getElementById('bmivalue').value = newbmivalue; 
+        }
+    </script>
+
+    <!-- script  -->
+    <script src="bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
